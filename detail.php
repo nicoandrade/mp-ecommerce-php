@@ -635,7 +635,7 @@
                                             data-button-label="Pagar la compra">
                                         </script>
                                     </form>
-                                    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
+                                    <!-- <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a> -->
                                     <?php
                                         } else {
                                             echo '<h4>Esta información solo se muestra por ser un ejercicio</h4>';

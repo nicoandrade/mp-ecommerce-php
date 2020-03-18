@@ -15,7 +15,7 @@ if ( isset( $event->type, $event->id ) ) {
     $event_type = $event->type;
     $event_id = $event->id;
 
-    $payment = MercadoPago\Payment . find_by_id( $_POST["id"] );
+    $payment = MercadoPago\Payment::find_by_id( $event_id );
 
     $current = file_get_contents( $file );
     $current .= $event_type . " recibido - ID #" . $event_id . "\n";

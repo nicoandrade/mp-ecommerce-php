@@ -450,6 +450,33 @@
         cursor: pointer;
         border: 0;
     }
+
+    .as-accessories-filter-tile {
+        margin: 0 auto;
+    }
+
+    .as-accessories-filter-tile .as-filter-button-text {
+        color: red;
+    }
+
+    .payment-info {
+        margin: 0 auto 100px auto;
+        width: 50%;
+        padding: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .payment-info .payment-info-item {}
+
+    .payment-info .payment-info-item span {
+        display: block;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #848484;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -496,149 +523,31 @@
                         </div>
                         <div class="as-searchnav-placeholder" style="height: 77px;">
                             <div class="row as-search-navbar" id="as-search-navbar" style="width: auto;">
-                                <div class="as-accessories-filter-tile column large-6 small-3">
-
-                                    <button class="as-filter-button" aria-expanded="true"
-                                        aria-controls="as-search-filters" type="button">
-                                        <h2 class=" as-filter-button-text">
-                                            Smartphones
-                                        </h2>
-                                    </button>
-
-
+                                <div class="as-accessories-filter-tile large-6 small-3">
+                                    <h2 class=" as-filter-button-text">
+                                        Error con el pago
+                                    </h2>
                                 </div>
 
                             </div>
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
-                            <div class="width:60%">
-                                <div class="as-producttile-tilehero with-paddlenav " style="float:left;">
-                                    <div class="as-dummy-container as-dummy-img">
 
-                                        <img src="./assets/wireless-headphones"
-                                            class="ir ir item-image as-producttile-image  "
-                                            style="max-width: 70%;max-height: 70%;" alt="" width="445" height="445">
-                                    </div>
-                                    <div class="images mini-gallery gal5 ">
-
-
-                                        <div class="as-isdesktop with-paddlenav with-paddlenav-onhover">
-                                            <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink"
-                                                data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
-                                                <div class="as-tilegallery-element as-image-selected">
-                                                    <div class=""></div>
-                                                    <img src="./assets/003.jpg"
-                                                        class="ir ir item-image as-producttile-image" alt="" width="445"
-                                                        height="445"
-                                                        style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
-                                                </div>
-
-                                            </div>
-
-
-                                        </div>
-
-
-
-                                    </div>
-
+                            <div class="payment-info">
+                                <div class="payment-info-item">
+                                    <span>ID Pago</span>
+                                    1234565
                                 </div>
-                                <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                                    <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
-                                        <div class="as-producttile-title">
-                                            <h3 class="as-producttile-name">
-                                                <p class="as-producttile-tilelink">
-                                                    <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
-                                                </p>
-
-                                            </h3>
-                                        </div>
-                                        <h3>
-                                            <?php echo $_POST['unit'] ?>
-                                        </h3>
-                                        <h3>
-                                            <?php echo "$" . $_POST['price'] ?>
-                                        </h3>
-                                    </div>
-                                    <?php
-                                        // Crea un objeto de preferencia
-                                        $preference = new MercadoPago\Preference();
-
-                                        // Crea un ítem en la preferencia
-                                        $item = new MercadoPago\Item();
-                                        $item->id = "1234";
-                                        $item->description = "Dispositivo móvil de Tienda e-commerce";
-                                        $item->title = htmlspecialchars( $_POST["title"] );
-                                        $item->picture_url = "http://$_SERVER[HTTP_HOST]" . substr( htmlspecialchars( $_POST["img"] ), 1 );
-                                        $item->quantity = intval( $_POST["unit"] );
-                                        $item->unit_price = floatval( $_POST["price"] );
-                                        $preference->items = array( $item );
-
-                                        $payer = new MercadoPago\Payer();
-                                        $payer->name = "Lalo";
-                                        $payer->surname = "Landa";
-                                        $payer->email = "test_user_63274575@testuser.com";
-                                        $payer->phone = array(
-                                            "area_code" => "",
-                                            "number"    => "011 22223333",
-                                        );
-                                        $payer->identification = array(
-                                            "type"   => "DNI",
-                                            "number" => "22333444",
-                                        );
-                                        $payer->address = array(
-                                            "street_name"   => "Falsa",
-                                            "street_number" => 123,
-                                            "zip_code"      => "1111",
-                                        );
-                                        $preference->payer = $payer;
-
-                                        $preference->payment_methods = array(
-                                            'excluded_payment_methods' => array(
-                                                array( 'id' => 'amex' ),
-                                            ),
-                                            "excluded_payment_types"   => array(
-                                                array( 'id' => 'atm' ),
-                                            ),
-                                            'installments'             => 6,
-
-                                        );
-
-                                        $preference->back_urls = array(
-                                            'success' => "http://$_SERVER[HTTP_HOST]" . '/success.php',
-                                            'failure' => "http://$_SERVER[HTTP_HOST]" . '/failure.php',
-                                            'pending' => "http://$_SERVER[HTTP_HOST]" . '/pending.php',
-                                        );
-
-                                        //$preference->notification_url = "https://$_SERVER[HTTP_HOST]" . '/webhook.php';
-
-                                        $preference->external_reference = "ABCD1234";
-                                        $preference->auto_return = "approved";
-
-                                        if ( $preference->save() ) {
-                                        ?>
-                                    <form action="/procesar-pago" method="POST">
-                                        <script
-                                            src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                                            data-preference-id="<?php echo $preference->id; ?>"
-                                            data-elements-color="#2D3277" data-header-color="#2D3277"
-                                            data-button-label="Pagar la compra">
-                                        </script>
-                                    </form>
-                                    <?php
-                                        } else {
-                                            echo '<h4>Esta información solo se muestra por ser un ejercicio</h4>';
-                                            echo '<pre>';
-                                            echo $preference->error;
-                                            foreach ( $preference->error->causes as $cause ) {
-                                                echo $cause->code . ' ' . $cause->description;
-                                            }
-                                            echo '</pre>';
-                                        }
-                                    ?>
-
+                                <div class="payment-info-item">
+                                    <span>ID Pago</span>
+                                    1234565
+                                </div>
+                                <div class="payment-info-item">
+                                    <span>ID Pago</span>
+                                    1234565
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

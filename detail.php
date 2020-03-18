@@ -569,7 +569,7 @@
                                         $item->id = "1234";
                                         $item->description = "Dispositivo móvil de Tienda e-commerce";
                                         $item->title = htmlspecialchars( $_POST["title"] );
-                                        $item->picture_url = "http://$_SERVER[HTTP_HOST]" . substr( htmlspecialchars( $_POST["img"] ), 1 );
+                                        $item->picture_url = "https://$_SERVER[HTTP_HOST]" . substr( htmlspecialchars( $_POST["img"] ), 1 );
                                         $item->quantity = intval( $_POST["unit"] );
                                         $item->unit_price = floatval( $_POST["price"] );
                                         $preference->items = array( $item );
@@ -604,14 +604,10 @@
 
                                         );
 
-                                        echo '<pre>';
-                                        print_r( "http://$_SERVER[HTTP_HOST]" . '/success.php' );
-                                        echo '</pre>';
-
                                         $preference->back_urls = array(
-                                            'success' => "http://$_SERVER[HTTP_HOST]" . '/success.php',
-                                            'failure' => "http://$_SERVER[HTTP_HOST]" . '/failure.php',
-                                            'pending' => "http://$_SERVER[HTTP_HOST]" . '/pending.php',
+                                            'success' => "https://$_SERVER[HTTP_HOST]" . '/success.php',
+                                            'failure' => "https://$_SERVER[HTTP_HOST]" . '/failure.php',
+                                            'pending' => "https://$_SERVER[HTTP_HOST]" . '/pending.php',
                                         );
 
                                         $preference->notification_url = "https://$_SERVER[HTTP_HOST]" . '/webhook.php';

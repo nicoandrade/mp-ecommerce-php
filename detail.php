@@ -605,15 +605,19 @@
                                         );
 
                                         $preference->back_urls = array(
-                                            'success' => "https://$_SERVER[HTTP_HOST]" . '/success.php',
-                                            'failure' => "https://$_SERVER[HTTP_HOST]" . '/failure.php',
-                                            'pending' => "https://$_SERVER[HTTP_HOST]" . '/pending.php',
+                                            'success' => "https://nicoandrade-mp-commerce-php.herokuapp.com/success.php",
+                                            'failure' => "https://nicoandrade-mp-commerce-php.herokuapp.com/failure.php",
+                                            'pending' => "https://nicoandrade-mp-commerce-php.herokuapp.com/pending.php",
                                         );
 
-                                        $preference->notification_url = "https://$_SERVER[HTTP_HOST]" . '/webhook.php';
+                                        $preference->notification_url = "https://nicoandrade-mp-commerce-php.herokuapp.com/webhook.php";
 
                                         $preference->external_reference = "ABCD1234";
                                         $preference->auto_return = "approved";
+
+                                        // echo '<pre>';
+                                        // print_r( $preference );
+                                        // echo '</pre>';
 
                                         if ( $preference->save() ) {
                                         ?>

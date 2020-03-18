@@ -626,7 +626,7 @@
 
                                         if ( $preference->save() ) {
 
-                                            // Hay un bug en Mercado Pago con las back_urls al usar el modal que no sucede cuando se usa el redirect ?>
+                                        // Hay un bug en Mercado Pago con las back_urls al usar el modal que no sucede cuando se usa el redirect ?>
                                     <form action="/procesar-pago" method="POST">
                                         <script
                                             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
@@ -635,7 +635,7 @@
                                             data-button-label="Pagar la compra">
                                         </script>
                                     </form>
-                                    <!-- <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a> -->
+                                    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
                                     <?php
                                         } else {
                                             echo '<h4>Esta información solo se muestra por ser un ejercicio</h4>';

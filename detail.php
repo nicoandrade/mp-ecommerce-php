@@ -604,13 +604,17 @@
 
                                         );
 
+                                        echo '<pre>';
+                                        print_r( "http://$_SERVER[HTTP_HOST]" . '/success.php' );
+                                        echo '</pre>';
+
                                         $preference->back_urls = array(
                                             'success' => "http://$_SERVER[HTTP_HOST]" . '/success.php',
                                             'failure' => "http://$_SERVER[HTTP_HOST]" . '/failure.php',
                                             'pending' => "http://$_SERVER[HTTP_HOST]" . '/pending.php',
                                         );
 
-                                        //$preference->notification_url = "https://$_SERVER[HTTP_HOST]" . '/webhook.php';
+                                        $preference->notification_url = "https://$_SERVER[HTTP_HOST]" . '/webhook.php';
 
                                         $preference->external_reference = "ABCD1234";
                                         $preference->auto_return = "approved";

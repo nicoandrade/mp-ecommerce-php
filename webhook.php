@@ -8,11 +8,17 @@ MercadoPago\SDK::setAccessToken( "APP_USR-6317427424180639-090914-5c508e1b02a34f
 
 $file = 'logs.txt';
 
-if ( $_POST["type"] ) {
+$json_event = file_get_contents( 'php://input', true );
+$event = json_decode( $json_event );
+
+if ( isset( $event->type, $event->data->id ) ) {
+    $event_type = $event->type;
+    $event_id = $event->data->id;
+
     $payment = MercadoPago\Payment . find_by_id( $_POST["id"] );
 
     $current = file_get_contents( $file );
-    $current .= $_POST["type"] . " recibido - ID #" . $_POST["id"] . "\n";
+    $current .= $event_type . " recibido - ID #" . $event_id . "\n";
 
 } else {
     $current = file_get_contents( $file );

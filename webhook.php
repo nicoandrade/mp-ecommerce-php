@@ -13,7 +13,7 @@ $event = json_decode( $json_event );
 
 if ( isset( $event->type, $event->id ) ) {
     $event_type = $event->type;
-    $event_id = $event->data->id;
+    $event_id = $event->id;
 
     $payment = MercadoPago\Payment . find_by_id( $_POST["id"] );
 

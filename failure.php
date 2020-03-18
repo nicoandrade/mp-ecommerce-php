@@ -527,27 +527,12 @@
                                     <h2 class=" as-filter-button-text">
                                         Error con el pago
                                     </h2>
+                                    <p>Intente mas tarde</p>
                                 </div>
 
                             </div>
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
-
-                            <div class="payment-info">
-                                <div class="payment-info-item">
-                                    <span>ID Pago</span>
-                                    1234565
-                                </div>
-                                <div class="payment-info-item">
-                                    <span>ID Pago</span>
-                                    1234565
-                                </div>
-                                <div class="payment-info-item">
-                                    <span>ID Pago</span>
-                                    1234565
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>

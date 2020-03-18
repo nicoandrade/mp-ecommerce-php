@@ -1,20 +1,2 @@
 <?php
-// Loading Composer
-require dirname( __DIR__, 1 ) . '/vendor/autoload.php';
-
-// Mercado Pago Credentials
-MercadoPago\SDK::setAccessToken( "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398" ); // On Production
-//MercadoPago\SDK::setAccessToken( "YOUR_TEST_ACCESS_TOKEN" ); // On Sandbox
-
-$json_event = file_get_contents( 'php://input', true );
-$event = json_decode( $json_event );
-
-echo '<pre>';
-print_r( $event );
-echo '</pre>';
-echo '<pre>';
-print_r( $_POST );
-echo '</pre>';
-echo '<pre>';
-print_r( $_GET );
-echo '</pre>';
+echo 'Hay un bug en Mercado Pago con las back_urls al usar el modal que no sucede cuando se usa el redirect';

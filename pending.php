@@ -533,67 +533,187 @@
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
 
+                            <?php
+                                $payment = MercadoPago\Payment::find_by_id( $_GET['collection_id'] );
+                            ?>
+
                             <div class="payment-info">
                                 <div class="payment-info-item">
                                     <span>ID Pago</span>
-                                    1234565
+                                    <?php
+                                        echo $payment->id;
+                                    ?>
                                 </div>
                                 <div class="payment-info-item">
-                                    <span>ID Pago</span>
-                                    1234565
-                                </div>
-                                <div class="payment-info-item">
-                                    <span>ID Pago</span>
-                                    1234565
-                                </div>
-                            </div>
+                                    <span>Tipo de Pago</span>
+                                    <?php
+                                        switch ( $payment->payment_type_id ) {
+                                        case 'credit_card':
+                                            echo 'Tarjeta de Crédito';
+                                            break;
+                                        case 'debit_card':
+                                            echo 'Tarjeta de Debito';
+                                            break;
+                                        case 'ticket':
+                                            echo 'Ticket';
+                                            break;
+                                        case 'atm':
+                                            echo 'Cajero Automático';
+                                            break;
+                                        case 'bank_transfer':
+                                            echo 'Transferencia Bancaria';
+                                            break;
+                                        case 'prepaid_card':
+                                            echo 'Tarjeta Prepaga';
+                                            break;
+                                        case 'account_money':
+                                            echo 'Saldo Mercado Pago';
+                                            break;
+                                        default:
+                                            echo $payment->payment_type_id;
+                                            break;
 
+                                        }
+
+                                    ?>
+                                </div>
+                                <div class="payment-info-item">
+                                    <span>Método de Pago</span>
+                                    <?php
+                                        switch ( $payment->payment_method_id ) {
+                                        case 'visa':
+                                            echo 'Visa';
+                                            break;
+                                        case 'master':
+                                            echo 'Mastercard';
+                                            break;
+                                        case 'amex':
+                                            echo 'American Express';
+                                            break;
+                                        case 'mercadopago_cc':
+                                            echo 'Mercado Pago + Banco Patagonia';
+                                            break;
+                                        case 'naranja':
+                                            echo 'Naranja';
+                                            break;
+                                        case 'nativa':
+                                            echo 'Nativa Mastercard';
+                                            break;
+                                        case 'tarshop':
+                                            echo 'Tarjeta Shopping';
+                                            break;
+                                        case 'cabal':
+                                            echo 'Cabal';
+                                            break;
+                                        case 'cencosud':
+                                            echo 'Cencosud';
+                                            break;
+                                        case 'diners':
+                                            echo 'Diners';
+                                            break;
+                                        case 'pagofacil':
+                                            echo 'Pago Fácil';
+                                            break;
+                                        case 'argencard':
+                                            echo 'Argencard';
+                                            break;
+                                        case 'maestro':
+                                            echo 'Maestro';
+                                            break;
+                                        case 'debmaster':
+                                            echo 'Mastercard Débito';
+                                            break;
+                                        case 'debcabal':
+                                            echo 'Cabal Débito';
+                                            break;
+                                        case 'debvisa':
+                                            echo 'Visa Débito';
+                                            break;
+                                        case 'rapipago':
+                                            echo 'Rapipago';
+                                            break;
+                                        case 'redlink':
+                                            echo 'Red Link';
+                                            break;
+                                        case 'bapropagos':
+                                            echo 'Provincia NET';
+                                            break;
+                                        case 'cargavirtual':
+                                            echo 'Kioscos y comercios cercanos';
+                                            break;
+                                        case 'cordobesa':
+                                            echo 'Cordobesa';
+                                            break;
+                                        case 'cordial':
+                                            echo 'Tarjeta Walmart';
+                                            break;
+                                        case 'cmr':
+                                            echo 'CMR';
+                                            break;
+                                        case 'nevada':
+                                            echo 'Nevada';
+                                            break;
+                                        case 'cobroexpress':
+                                            echo 'CobroExpress';
+                                            break;
+                                        default:
+                                            echo $payment->payment_method_id;
+                                            break;
+                                        }
+
+                                    ?>
+                                </div>
+                                <div class="payment-info-item">
+                                    <span>ID Orden</span>
+                                    <?php echo htmlspecialchars( $_GET['merchant_order_id'] ); ?>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="alert" class="as-loader-text ally" aria-live="assertive"></div>
-        <div class="as-footnotes">
-            <div class="as-footnotes-content">
-                <div class="as-footnotes-sosumi">
-                    Todos los derechos reservados Tienda Tecno 2019
+            <div role="alert" class="as-loader-text ally" aria-live="assertive"></div>
+            <div class="as-footnotes">
+                <div class="as-footnotes-content">
+                    <div class="as-footnotes-sosumi">
+                        Todos los derechos reservados Tienda Tecno 2019
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div class="mp-mercadopago-checkout-wrapper"
-        style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
-        <svg class="mp-spinner" viewBox="25 25 50 50">
-            <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
-        </svg> </div>
-    <div id="ac-gn-viewport-emitter"> </div>
+        </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div class="mp-mercadopago-checkout-wrapper"
+            style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;">
+            <svg class="mp-spinner" viewBox="25 25 50 50">
+                <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle>
+            </svg> </div>
+        <div id="ac-gn-viewport-emitter"> </div>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ $file = 'logs.txt';
 $json_event = file_get_contents( 'php://input', true );
 $event = json_decode( $json_event );
 
-if ( isset( $event->type, $event->data->id ) ) {
+if ( isset( $event->type, $event->id ) ) {
     $event_type = $event->type;
     $event_id = $event->data->id;
 

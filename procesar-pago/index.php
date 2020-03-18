@@ -15,11 +15,6 @@ echo '</pre>';
 echo '<pre>';
 print_r( $_POST );
 echo '</pre>';
-
-if ( isset( $event->type, $event->data->id ) ) {
-    $event_type = $event->type;
-    $event_id = $event->data->id;
-
-    $payment = MercadoPago\Payment . find_by_id( $_POST["id"] );
-
-}
+echo '<pre>';
+print_r( $_GET );
+echo '</pre>';

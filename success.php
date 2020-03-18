@@ -534,6 +534,14 @@
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
 
+                            <?php
+                                if ( isset( $_GET['payment_type'] ) ) {
+                                    echo '<pre>';
+                                    print_r( $_GET['payment_type'] );
+                                    echo '</pre>';
+                                }
+                            ?>
+
                             <div class="payment-info">
                                 <div class="payment-info-item">
                                     <span>ID Pago</span>
